@@ -22,9 +22,28 @@ import PlaygroundSupport
 //: ## Your code starts here
 // Create a new canvas
 let canvas = Canvas(width: 400, height: 600)
-
-// Your code below...
-
+canvas.drawShapesWithBorders = false
+canvas.drawShapesWithFill = true
+canvas.fillColor = Color.black
+canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 400, height: 600)
+let a : Float = 200 / 3
+let grey = Color(hue: 0, saturation: 0, brightness: 90, alpha: 100)
+for x in stride(from: 0, through: 400 - a, by: a) {
+    for y in stride(from: 0, through: 400 - a, by: a) {
+        if x == y {
+            canvas.fillColor = grey
+            canvas.lineColor = grey
+        } else {
+            canvas.fillColor = Color.purple
+            canvas.lineColor = Color.purple
+        }
+    canvas.drawRectangle(bottomLeftX: x, bottomLeftY: y, width: 45, height: 45)
+    canvas.fillColor = Color.black
+    canvas.drawRectangle(bottomLeftX: x + 15, bottomLeftY: y + 15, width: 31, height: 31)
+    canvas.defaultLineWidth = 15
+    canvas.drawLine(fromX: x + 11, fromY: y + 11, toX: x + 45, toY: y + 45)
+    }
+}
 //: ## Template code
 //: The code below is necessary to see the result of your work in the Assistant Editor at right. Please do not remove.
 PlaygroundPage.current.liveView = canvas.imageView

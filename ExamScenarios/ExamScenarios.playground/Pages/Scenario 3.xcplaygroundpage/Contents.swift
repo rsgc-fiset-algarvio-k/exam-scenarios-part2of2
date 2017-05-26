@@ -22,8 +22,25 @@ import PlaygroundSupport
 //: ## Your code starts here
 // Create a new canvas
 let canvas = Canvas(width: 400, height: 600)
+canvas.drawShapesWithFill = true
+canvas.drawShapesWithBorders = false
+canvas.fillColor = Color.orange
 
-
+canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 400, height: 600)
+for x in stride(from: 0, through: 400-400/9, by: 400/9) {
+    for y in stride(from: 200, through: 600-400/9, by: 400/9) {
+        if x - y >= -200 {
+            canvas.fillColor = Color.yellow
+        } else {
+            canvas.fillColor = Color(hue: 1, saturation: 0, brightness: 80, alpha: 100)
+        }
+    var points : [NSPoint] = []
+    points.append(NSPoint(x: x, y: y))
+    points.append(NSPoint(x: x + 400/9, y: y))
+    points.append(NSPoint(x: x + 400/9, y: y + 400/9))
+    canvas.drawCustomShape(with: points)
+    }
+}
 //: ## Template code
 //: The code below is necessary to see the result of your work in the Assistant Editor at right. Please do not remove.
 PlaygroundPage.current.liveView = canvas.imageView
