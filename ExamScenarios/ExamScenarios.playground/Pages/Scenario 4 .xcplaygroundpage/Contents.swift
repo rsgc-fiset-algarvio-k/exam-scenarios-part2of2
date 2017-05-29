@@ -57,6 +57,15 @@ for x in stride(from: 441, through: -100, by: -95) {
         canvas.drawRoundedRectangle(bottomLeftX: x, bottomLeftY: y, width: 92, height: 92, borderWidth: 0, xRadius: 20, yRadius: 20)
     }
 }
+
+//canvas.drawText(message: "velocity girl", size: 50, x: 40, y: 475)
+canvas.drawText(message: "velocity girl", size: 45, x: 45, y: 475, kerning: -1)
+canvas.drawText(message: "with special guest", size: 13, x: 300, y: 500, kerning: -1)
+canvas.drawText(message: "sunny day real estate", size: 13, x: 300, y: 485, kerning: -1)
+canvas.drawText(message: "friday", size: 10, x: 300, y: 640, kerning: -1)
+canvas.drawText(message: "september 23 1994 / 8 pm", size: 10, x: 300, y: 630, kerning: -1)
+canvas.drawText(message: "at the tavern", size: 10, x: 45, y: 550, kerning: -1)
+canvas.drawText(message: "american university / washington, dc", size: 10, x: 45, y: 540, kerning: -1)
 //: ## Template code
 //: The code below is necessary to see the result of your work in the Assistant Editor at right. Please do not remove.
 PlaygroundPage.current.liveView = canvas.imageView

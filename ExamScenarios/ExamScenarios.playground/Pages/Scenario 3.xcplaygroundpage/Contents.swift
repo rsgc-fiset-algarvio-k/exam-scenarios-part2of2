@@ -22,25 +22,41 @@ import PlaygroundSupport
 //: ## Your code starts here
 // Create a new canvas
 let canvas = Canvas(width: 400, height: 600)
-canvas.drawShapesWithFill = true
 canvas.drawShapesWithBorders = false
-canvas.fillColor = Color.orange
+let grey = Color(hue: 82, saturation: 8, brightness: 88, alpha: 100)
+let yellow = Color(hue: 49, saturation: 100, brightness: 100, alpha: 100)
+let orange = Color(hue: 16, saturation: 94, brightness: 95, alpha: 100)
+canvas.fillColor = grey
+canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 200, width: 400, height: 400)
+canvas.fillColor = yellow
+var points : [NSPoint] = []
+points.append(NSPoint(x: 0, y: 200))
+points.append(NSPoint(x: 400, y: 200))
+points.append(NSPoint(x: 400, y: 600))
+canvas.drawCustomShape(with: points)
 
-canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 400, height: 600)
-for x in stride(from: 0, through: 400-400/9, by: 400/9) {
-    for y in stride(from: 200, through: 600-400/9, by: 400/9) {
-        if x - y >= -200 {
-            canvas.fillColor = Color.yellow
-        } else {
-            canvas.fillColor = Color(hue: 1, saturation: 0, brightness: 80, alpha: 100)
-        }
-    var points : [NSPoint] = []
-    points.append(NSPoint(x: x, y: y))
-    points.append(NSPoint(x: x + 400/9, y: y))
-    points.append(NSPoint(x: x + 400/9, y: y + 400/9))
-    canvas.drawCustomShape(with: points)
+canvas.fillColor = orange
+canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 400, height: 200)
+
+let a : CGFloat = 400.0/9.0
+for x in stride(from: CGFloat(0), through: CGFloat(400), by: a) {
+    for y in stride(from: CGFloat(600), through: CGFloat(200), by: -a) {
+        
+        var points : [NSPoint] = []
+        points.append(NSPoint(x: CGFloat(x), y: CGFloat(y)))
+        points.append(NSPoint(x: CGFloat(x), y: CGFloat(y) + a))
+        points.append(NSPoint(x: CGFloat(x) + a, y: CGFloat(y) + a))
+        canvas.drawCustomShape(with: points)
     }
 }
+canvas.textColor = grey
+canvas.drawText(message: "talking heads", size: 40, x: 20, y: 140)
+canvas.drawText(message: "friday, saturday, sunday", size: 9, x: 20, y: 30, kerning: -1)
+canvas.drawText(message: "september 12, 13, 14, 1975", size: 9, x: 20, y: 15, kerning: -1)
+canvas.drawText(message: "at cbgb and omfug", size: 9, x: 140, y: 30, kerning: -1)
+canvas.drawText(message: "315 bowery, new york city", size: 9, x: 140, y: 15, kerning: -1)
+canvas.drawText(message: "also appearing:", size: 9, x: 285, y: 30, kerning: -1)
+canvas.drawText(message: "from brooklyn, the shirts", size: 9, x: 285, y: 15, kerning: -1)
 //: ## Template code
 //: The code below is necessary to see the result of your work in the Assistant Editor at right. Please do not remove.
 PlaygroundPage.current.liveView = canvas.imageView
